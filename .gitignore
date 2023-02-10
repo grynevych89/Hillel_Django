@@ -11,9 +11,9 @@ db.sqlite3
 
 venv
 
-prod_settings.py
-local_settings.py
-settings.py
+#prod_settings.py
+#local_settings.py
+#settings.py
 passenger_wsgi.py
 stderr.log
 tmp/
