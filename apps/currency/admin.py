@@ -23,4 +23,3 @@ class ContactUsAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Основне', {'fields': ('subject', 'email_from', 'message',), }),
     )
-
