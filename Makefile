@@ -1,4 +1,4 @@
-manage_py := python app/manage.py
+manage_py := python manage.py
 
 run:
 	$(manage_py) runserver
