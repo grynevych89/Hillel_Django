@@ -11,6 +11,3 @@ class RateAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Основне', {'fields': ('currency', 'sell', 'buy', 'source',), }),
     )
-
-
-
