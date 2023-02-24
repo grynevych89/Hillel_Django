@@ -10,9 +10,11 @@
     <title>Grynevych Mykola - {% block title %}{% endblock %}</title>
 </head>
 <body>
-
-{% block content %}
-{% endblock content %}
-
+    {% include 'layouts/header.html' %}
+<main>
+    {% block content %}
+    {% endblock content %}
+</main>
+    {% include 'layouts/footer.html' %}
 </body>
 </html>

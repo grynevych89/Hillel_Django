@@ -1,9 +1,26 @@
-table, th, td {
-    border: 1px solid black;
+body {
+    text-align: center;
+    font: 13pt 'Trebuchet MS';
+    padding: 10px 10%;
+    color: gray;
 }
-table {
-    margin-bottom: 10px;
+.main-box {
+    padding-bottom: 30px;
 }
-th, td {
+.main-box h4 {
+    font-size: 18pt;
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+.my-table {
+    width: 60%;
+    margin: 15px auto;
+    border: 1px solid silver;
+}
+.my-table th,
+.my-table td {
     padding: 5px;
+}
+.my-table tr, th, td {
+    border: 1px solid silver;
 }

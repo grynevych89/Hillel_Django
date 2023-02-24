@@ -13,17 +13,4 @@ class Rate(models.Model):
 
     class Meta:
         verbose_name = "Курс валют"
-        verbose_name_plural = "1. Курс валют"
-
-
-class ContactUs(models.Model):
-    subject = models.CharField('Тема', max_length=128)
-    email_from = models.EmailField('email', blank=False)
-    message = models.TextField('Текст звернення', max_length=2056, null=True, blank=True)
-
-    def __str__(self):
-        return self.email_from
-
-    class Meta:
-        verbose_name = "Звернення кліентів"
-        verbose_name_plural = "2. Звернення кліентів"
+        verbose_name_plural = "Курс валют"

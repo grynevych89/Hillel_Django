@@ -2,55 +2,26 @@
 {% block title %}Currency{% endblock %}
 {% load static %}
 {% block content %}
-<div class="currency">
-    <h1>CURRENCY:</h1>
-    {% for r in rate %}
-    <table>
+<div class="main-box">
+    <h4>CURRENCY:</h4>
+    <table class="my-table">
         <tr>
             <th><b>currency:</b></th>
-            <td>{{ r.currency }}</td>
-        </tr>
-        <tr>
             <th><b>sell:</b></th>
-            <td>{{ r.sell }}</td>
-        </tr>
-        <tr>
             <th><b>buy:</b></th>
-            <td>{{ r.buy }}</td>
-        </tr>
-        <tr>
             <th><b>source:</b></th>
-            <td>{{ r.source }}</td>
-        </tr>
-        <tr>
             <th><b>created:</b></th>
+        </tr>
+    {% for r in rate %}
+        <tr>
+            <td>{{ r.currency }}</td>
+            <td>{{ r.sell }}</td>
+            <td>{{ r.buy }}</td>
+            <td>{{ r.source }}</td>
             <td>{{ r.created }}</td>
         </tr>
-    </table>
     {% endfor %}
+    </table>
 </div>
 
-<div class="contact_us">
-    <h1>CONTACT US:</h1>
-    {% for c in contact_us %}
-    <table>
-        <tr>
-            <th><b>id:</b></th>
-            <td>{{ c.id }}</td>
-        </tr>
-        <tr>
-            <th><b>subject:</b></th>
-            <td>{{ c.subject }}</td>
-        </tr>
-        <tr>
-            <th><b>email_from:</b></th>
-            <td>{{ c.email_from }}</td>
-        </tr>
-        <tr>
-            <th><b>message:</b></th>
-            <td>{{ c.message }}</td>
-        </tr>
-    </table>
-    {% endfor %}
-</div>
 {% endblock content %}

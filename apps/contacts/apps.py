@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
 
-class CurrencyConfig(AppConfig):
+class ContactsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'currency'
-    verbose_name = '1. currency'
+    name = 'contacts'
+    verbose_name = '2. contacts'
