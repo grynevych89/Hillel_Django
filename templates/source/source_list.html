@@ -1,0 +1,34 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}
+    Sources
+{% endblock title %}
+
+{% block content %}
+<div class="main-box">
+    <h4>SOURCES:</h4>
+    <a href="{% url 'source_create' %}">Create new source</a><br>
+    <table class="my-table">
+        <tr>
+            <th><b>name:</b></th>
+            <th><b>text:</b></th>
+            <th><b>source_url:</b></th>
+            <th><b>price:</b></th>
+            <th></th>
+            <th></th>
+        </tr>
+    {% for s in source %}
+        <tr>
+            <td>{{ s.name }}</td>
+            <td>{{ s.text|safe }}</td>
+            <td>{{ s.source_url }}</td>
+            <td>{{ s.price }}</td>
+            <td><a href="/source/details/{{ s.id }}/">Details</a></td>
+            <td><a href="/source/update/{{ s.id }}/">Update</a></td>
+            <td><a href="/source/delete/{{ s.id }}/">Delete</a></td>
+        </tr>
+    {% endfor %}
+    </table>
+</div>
+{% endblock content %}
+

@@ -1,0 +1,30 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}
+    Source {{ source.name }}
+{% endblock title %}
+
+{% block content %}
+<div class="main-box">
+    <h4>SOURCE {{ source.id }}:</h4>
+    <table class="my-table">
+        <tr>
+            <th><b>name:</b></th>
+            <th><b>text:</b></th>
+            <th><b>source_url:</b></th>
+            <th><b>price:</b></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>{{ source.name }}</td>
+            <td>{{ source.text|safe }}</td>
+            <td>{{ source.source_url }}</td>
+            <td>{{ source.price }}</td>
+            <td><a href="/source/update/{{ source.id }}/">Update</a></td>
+            <td><a href="/source/delete/{{ source.id }}/">Delete</a></td>
+        </tr>
+    </table>
+</div>
+{% endblock content %}
+
