@@ -6,18 +6,12 @@ from source.forms import SourceForm
 
 def list_source(request):
     source = Source.objects.all()
-    context = {
-        'source': source
-    }
-    return render(request, 'source/source_list.html', context)
+    return render(request, 'source/source_list.html', context={'source': source, })
 
 
 def source_details(request, pk):
     source = get_object_or_404(Source, pk=pk)
-    context = {
-        'source': source
-    }
-    return render(request, 'source/source_details.html', context)
+    return render(request, 'source/source_details.html', context={'source': source, })
 
 
 def source_create(request):
@@ -28,10 +22,7 @@ def source_create(request):
             return HttpResponseRedirect('/source/list/')
     elif request.method == 'GET':
         source_form = SourceForm()
-        context = {
-            'source_form': source_form
-        }
-        return render(request, 'source/source_create.html', context)
+    return render(request, 'source/source_create.html', context={'source_form': source_form, })
 
 
 def source_update(request, pk):
@@ -44,10 +35,7 @@ def source_update(request, pk):
             return HttpResponseRedirect('/source/list/')
     elif request.method == 'GET':
         source_form = SourceForm(instance=source)
-        context = {
-            'source_form': source_form,
-        }
-        return render(request, 'source/source_update.html', context)
+    return render(request, 'source/source_update.html', context={'source_form': source_form, })
 
 
 def source_delete(request, pk):
@@ -56,7 +44,4 @@ def source_delete(request, pk):
         source.delete()
         return HttpResponseRedirect('/source/list/')
     elif request.method == 'GET':
-        context = {
-            'source': source,
-        }
-        return render(request, 'source/source_delete.html', context)
+        return render(request, 'source/source_delete.html', context={'source': source, })
