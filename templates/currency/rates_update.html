@@ -1,0 +1,17 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}
+    Update Rates
+{% endblock title %}
+
+{% block content %}
+<br>
+    Update Rate Form
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+{% endblock content %}

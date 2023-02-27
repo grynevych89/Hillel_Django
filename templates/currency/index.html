@@ -2,26 +2,7 @@
 {% block title %}Currency{% endblock %}
 {% load static %}
 {% block content %}
-<div class="main-box">
-    <h4>CURRENCY:</h4>
-    <table class="my-table">
-        <tr>
-            <th><b>currency:</b></th>
-            <th><b>sell:</b></th>
-            <th><b>buy:</b></th>
-            <th><b>source:</b></th>
-            <th><b>created:</b></th>
-        </tr>
-    {% for r in rate %}
-        <tr>
-            <td>{{ r.currency }}</td>
-            <td>{{ r.sell }}</td>
-            <td>{{ r.buy }}</td>
-            <td>{{ r.source }}</td>
-            <td>{{ r.created }}</td>
-        </tr>
-    {% endfor %}
-    </table>
-</div>
+<br>
+Главная страница
 
 {% endblock content %}

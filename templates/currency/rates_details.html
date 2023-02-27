@@ -1,0 +1,32 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}
+    Rates {{ rate.currency }}
+{% endblock title %}
+
+{% block content %}
+<div class="main-box">
+    <h4>CURRENCY {{ rate.id }}:</h4>
+    <table class="my-table">
+        <tr>
+            <th><b>currency:</b></th>
+            <th><b>sell:</b></th>
+            <th><b>buy:</b></th>
+            <th><b>source:</b></th>
+            <th><b>created:</b></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>{{ rate.currency }}</td>
+            <td>{{ rate.sell }}</td>
+            <td>{{ rate.buy }}</td>
+            <td>{{ rate.source }}</td>
+            <td>{{ rate.created }}</td>
+            <td><a href="/rate/update/{{ rate.id }}/">Update</a></td>
+            <td><a href="/rate/delete/{{ rate.id }}/">Delete</a></td>
+        </tr>
+    </table>
+</div>
+{% endblock content %}
+

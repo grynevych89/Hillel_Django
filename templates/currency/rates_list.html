@@ -1,0 +1,37 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}
+    Rates
+{% endblock title %}
+
+{% block content %}
+<div class="main-box">
+    <h4>CURRENCY:</h4>
+    <a href="{% url 'rate_create' %}">Create new rates</a><br>
+    <table class="my-table">
+        <tr>
+            <th><b>currency:</b></th>
+            <th><b>sell:</b></th>
+            <th><b>buy:</b></th>
+            <th><b>source:</b></th>
+            <th><b>created:</b></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    {% for r in rate %}
+        <tr>
+            <td>{{ r.currency }}</td>
+            <td>{{ r.sell }}</td>
+            <td>{{ r.buy }}</td>
+            <td>{{ r.source }}</td>
+            <td>{{ r.created }}</td>
+            <td><a href="/rate/details/{{ r.id }}/">Details</a></td>
+            <td><a href="/rate/update/{{ r.id }}/">Update</a></td>
+            <td><a href="/rate/delete/{{ r.id }}/">Delete</a></td>
+        </tr>
+    {% endfor %}
+    </table>
+</div>
+{% endblock content %}
+

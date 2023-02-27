@@ -1,0 +1,14 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}
+    Delete Rate {{ rate.id }}
+{% endblock title %}
+
+{% block content %}
+<br>
+    Do you really want to delete rate with id {{ rate.id }}
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes</button>
+    </form>
+{% endblock content %}
