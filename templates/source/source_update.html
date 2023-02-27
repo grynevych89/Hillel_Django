@@ -1,0 +1,17 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}
+    Update Source
+{% endblock title %}
+
+{% block content %}
+<br>
+    Update Source Form
+
+    <form method="post">
+        {% csrf_token %}
+        {{ source_form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+{% endblock content %}

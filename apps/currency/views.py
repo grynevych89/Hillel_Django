@@ -21,7 +21,6 @@ def rates_details(request, pk):
     context = {
         'rate': rate
     }
-
     return render(request, 'currency/rates_details.html', context)
 
 
@@ -33,11 +32,9 @@ def rates_create(request):
             return HttpResponseRedirect('/rate/list/')
     elif request.method == 'GET':
         form = RateForm()
-
         context = {
             'form': form
         }
-
         return render(request, 'currency/rates_create.html', context)
 
 
@@ -51,11 +48,9 @@ def rates_update(request, pk):
             return HttpResponseRedirect('/rate/list/')
     elif request.method == 'GET':
         form = RateForm(instance=rate)
-
         context = {
             'form': form,
         }
-
         return render(request, 'currency/rates_update.html', context)
 
 
@@ -65,9 +60,7 @@ def rates_delete(request, pk):
         rate.delete()
         return HttpResponseRedirect('/rate/list/')
     elif request.method == 'GET':
-
         context = {
             'rate': rate,
         }
-
         return render(request, 'currency/rates_delete.html', context)

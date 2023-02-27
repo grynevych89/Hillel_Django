@@ -1,0 +1,14 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}
+    Delete Source {{ source.id }}
+{% endblock title %}
+
+{% block content %}
+<br>
+    Do you really want to delete source with id {{ source.id }}
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes</button>
+    </form>
+{% endblock content %}
