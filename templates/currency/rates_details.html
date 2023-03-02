@@ -1,7 +1,7 @@
 {% extends 'layouts/base.html' %}
 
 {% block title %}
-    Rates {{ rate.currency }}
+    Rates
 {% endblock title %}
 
 {% block content %}
@@ -23,8 +23,8 @@
             <td>{{ rate.buy }}</td>
             <td>{{ rate.source }}</td>
             <td>{{ rate.created }}</td>
-            <td><a href="/rate/update/{{ rate.id }}/">Update</a></td>
-            <td><a href="/rate/delete/{{ rate.id }}/">Delete</a></td>
+            <td><a href="{% url 'rate-update' rate.id %}">Update</a></td>
+            <td><a href="{% url 'rate-delete' rate.id %}">Delete</a></td>
         </tr>
     </table>
 </div>

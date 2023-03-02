@@ -21,8 +21,8 @@
             <td>{{ source.text|safe }}</td>
             <td>{{ source.source_url }}</td>
             <td>{{ source.price }}</td>
-            <td><a href="/source/update/{{ source.id }}/">Update</a></td>
-            <td><a href="/source/delete/{{ source.id }}/">Delete</a></td>
+            <td><a href="{% url 'source-update' source.id %}">Update</a></td>
+            <td><a href="{% url 'source-delete' source.id %}">Delete</a></td>
         </tr>
     </table>
 </div>

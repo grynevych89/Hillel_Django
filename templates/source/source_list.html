@@ -7,7 +7,7 @@
 {% block content %}
 <div class="main-box">
     <h4>SOURCES:</h4>
-    <a href="{% url 'source_create' %}">Create new source</a><br>
+    <a href="{% url 'source-create' %}">Create new source</a><br>
     <table class="my-table">
         <tr>
             <th><b>name:</b></th>
@@ -17,15 +17,15 @@
             <th></th>
             <th></th>
         </tr>
-    {% for s in source %}
+    {% for source in object_list %}
         <tr>
-            <td>{{ s.name }}</td>
-            <td>{{ s.text|safe }}</td>
-            <td>{{ s.source_url }}</td>
-            <td>{{ s.price }}</td>
-            <td><a href="/source/details/{{ s.id }}/">Details</a></td>
-            <td><a href="/source/update/{{ s.id }}/">Update</a></td>
-            <td><a href="/source/delete/{{ s.id }}/">Delete</a></td>
+            <td>{{ source.name }}</td>
+            <td>{{ source.text|safe }}</td>
+            <td>{{ source.source_url }}</td>
+            <td>{{ source.price }}</td>
+            <td><a href="{% url 'source-detail' source.id %}">Details</a></td>
+            <td><a href="{% url 'source-update' source.id %}">Update</a></td>
+            <td><a href="{% url 'source-delete' source.id %}">Delete</a></td>
         </tr>
     {% endfor %}
     </table>

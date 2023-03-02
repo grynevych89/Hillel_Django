@@ -1,10 +1,12 @@
 {% extends 'layouts/base.html' %}
-{% block title %}Currency{% endblock %}
-{% load static %}
-{% block content %}
 
+{% block title %}
+    Contact
+{% endblock title %}
+
+{% block content %}
 <div class="main-box">
-    <h4>CONTACT US:</h4>
+    <h4>Contact {{ contact.id }}:</h4>
     <table class="my-table">
         <tr>
             <th><b>id:</b></th>
@@ -12,14 +14,12 @@
             <th><b>email_from:</b></th>
             <th><b>message:</b></th>
         </tr>
-    {% for c in contact_us %}
         <tr>
-            <td>{{ c.id }}</td>
-            <td>{{ c.subject }}</td>
-            <td>{{ c.email_from }}</td>
-            <td>{{ c.message }}</td>
+            <td>{{ contact.id }}</td>
+            <td>{{ contact.subject }}</td>
+            <td>{{ contact.email_from }}</td>
+            <td>{{ contact.message }}</td>
         </tr>
-    {% endfor %}
     </table>
 </div>
 {% endblock content %}

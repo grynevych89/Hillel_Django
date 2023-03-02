@@ -7,7 +7,7 @@ class ContactUs(models.Model):
     message = models.TextField('Текст звернення', max_length=2056, null=True, blank=True)
 
     def __str__(self):
-        return self.email_from
+        return self.subject
 
     class Meta:
         verbose_name = "Звернення кліентів"

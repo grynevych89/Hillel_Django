@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
 
 urlpatterns = [
-    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('admin/', admin.site.urls),
-    path('', include('currency.urls')),
-    path('contacts', include('contacts.urls')),
-    path('source', include('source.urls')),
+    path('', TemplateView.as_view(template_name='index.html'), name='index'),
+    path('rates/', include('currency.urls')),
+    path('source/', include('source.urls')),
+    path('contacts/', include('contacts.urls')),
 ]
