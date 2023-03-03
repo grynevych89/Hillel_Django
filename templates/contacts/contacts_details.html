@@ -6,19 +6,23 @@
 
 {% block content %}
 <div class="main-box">
-    <h4>Contact {{ contact.id }}:</h4>
+    <h4>Contact {{ contactus.id }}:</h4>
     <table class="my-table">
         <tr>
             <th><b>id:</b></th>
             <th><b>subject:</b></th>
             <th><b>email_from:</b></th>
             <th><b>message:</b></th>
+            <th></th>
+            <th></th>
         </tr>
         <tr>
-            <td>{{ contact.id }}</td>
-            <td>{{ contact.subject }}</td>
-            <td>{{ contact.email_from }}</td>
-            <td>{{ contact.message }}</td>
+            <td>{{ contactus.id }}</td>
+            <td>{{ contactus.subject }}</td>
+            <td>{{ contactus.email_from }}</td>
+            <td>{{ contactus.message }}</td>
+            <td><a href="{% url 'contact-update' contactus.id %}">Update</a></td>
+            <td><a href="{% url 'contact-delete' contactus.id %}">Delete</a></td>
         </tr>
     </table>
 </div>
