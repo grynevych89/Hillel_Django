@@ -7,7 +7,7 @@
 {% block content %}
 <div class="main-box">
     <h4>CURRENCY:</h4>
-    <a href="{% url 'rate_create' %}">Create new rates</a><br>
+    <a href="{% url 'rate-create' %}">Create new rates</a><br>
     <table class="my-table">
         <tr>
             <th><b>currency:</b></th>
@@ -19,19 +19,18 @@
             <th></th>
             <th></th>
         </tr>
-    {% for r in rate %}
+    {% for rate in object_list %}
         <tr>
-            <td>{{ r.currency }}</td>
-            <td>{{ r.sell }}</td>
-            <td>{{ r.buy }}</td>
-            <td>{{ r.source }}</td>
-            <td>{{ r.created }}</td>
-            <td><a href="/rate/details/{{ r.id }}/">Details</a></td>
-            <td><a href="/rate/update/{{ r.id }}/">Update</a></td>
-            <td><a href="/rate/delete/{{ r.id }}/">Delete</a></td>
+            <td>{{ rate.currency }}</td>
+            <td>{{ rate.sell }}</td>
+            <td>{{ rate.buy }}</td>
+            <td>{{ rate.source }}</td>
+            <td>{{ rate.created }}</td>
+            <td><a href="{% url 'rate-detail' rate.id %}">Details</a></td>
+            <td><a href="{% url 'rate-update' rate.id %}">Update</a></td>
+            <td><a href="{% url 'rate-delete' rate.id %}">Delete</a></td>
         </tr>
     {% endfor %}
     </table>
 </div>
 {% endblock content %}
-

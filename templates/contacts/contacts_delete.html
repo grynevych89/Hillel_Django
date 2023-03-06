@@ -1,17 +1,14 @@
 {% extends 'layouts/base.html' %}
 
 {% block title %}
-    Update Source
+    Delete Contact
 {% endblock title %}
 
 {% block content %}
 <br>
-    Update Source Form
-
+    Do you really want to delete contact with id {{ contactus.id }}
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
+        <button type="submit">Yes</button>
     </form>
-
 {% endblock content %}

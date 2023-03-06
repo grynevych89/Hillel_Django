@@ -1,0 +1,35 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}
+    Contacts Us
+{% endblock title %}
+
+{% block content %}
+<div class="main-box">
+    <h4>Contacts Us:</h4>
+    <a href="{% url 'contact-create' %}">Create new contact</a><br>
+    <table class="my-table">
+        <tr>
+            <th><b>id:</b></th>
+            <th><b>subject:</b></th>
+            <th><b>email_from:</b></th>
+            <th><b>message:</b></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    {% for contact in object_list %}
+        <tr>
+            <td>{{ contact.id }}</td>
+            <td>{{ contact.subject }}</td>
+            <td>{{ contact.email_from }}</td>
+            <td>{{ contact.message }}</td>
+            <td><a href="{% url 'contact-detail' contact.id %}">Details</a></td>
+            <td><a href="{% url 'contact-update' contact.id %}">Update</a></td>
+            <td><a href="{% url 'contact-delete' contact.id %}">Delete</a></td>
+        </tr>
+    {% endfor %}
+    </table>
+</div>
+{% endblock content %}
+
