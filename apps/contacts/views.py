@@ -1,7 +1,6 @@
 from contacts.models import ContactUs
 from contacts.forms import ContactUsForm
 from django.core.mail import send_mail
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
@@ -33,9 +32,9 @@ class ContactUsCreateView(CreateView):
         message = f'''
         Спасибо за обращение! Мы свяжемся с Вами в ближайшее время.
         Ваши введенные данны из формы:
-            Request from: {self.object.name}. 
-            Reply to email: {self.object.email_from}. 
-            Subject: {self.object.subject}, 
+            Request from: {self.object.name},
+            Reply to email: {self.object.email_from},
+            Subject: {self.object.subject},
             Body: {self.object.message}
         '''
         send_mail(
