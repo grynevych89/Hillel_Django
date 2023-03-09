@@ -7,7 +7,7 @@ class ContactUsForm(forms.ModelForm):
     class Meta:
         model = ContactUs
         fields = (
-            'id',
+            'name',
             'subject',
             'email_from',
             'message',

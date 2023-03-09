@@ -11,9 +11,11 @@
     <table class="my-table">
         <tr>
             <th><b>id:</b></th>
+            <th><b>name:</b></th>
             <th><b>subject:</b></th>
             <th><b>email_from:</b></th>
             <th><b>message:</b></th>
+            <th><b>created:</b></th>
             <th></th>
             <th></th>
             <th></th>
@@ -21,9 +23,11 @@
     {% for contact in object_list %}
         <tr>
             <td>{{ contact.id }}</td>
+            <td>{{ contact.name }}</td>
             <td>{{ contact.subject }}</td>
             <td>{{ contact.email_from }}</td>
             <td>{{ contact.message }}</td>
+            <td>{{ contact.created }}</td>
             <td><a href="{% url 'contact-detail' contact.id %}">Details</a></td>
             <td><a href="{% url 'contact-update' contact.id %}">Update</a></td>
             <td><a href="{% url 'contact-delete' contact.id %}">Delete</a></td>
