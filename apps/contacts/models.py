@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils import timezone
 
 
 class ContactUs(models.Model):
@@ -20,4 +19,4 @@ class ContactUs(models.Model):
 class RequestResponseLog(models.Model):
     path = models.CharField(max_length=256)
     request_method = models.CharField(max_length=16)
-    time = models.DateTimeField(default=timezone.now())
+    time = models.FloatField()

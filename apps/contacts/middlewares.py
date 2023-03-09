@@ -1,6 +1,5 @@
 from contacts.models import RequestResponseLog
-# from time import time
-from django.utils import timezone
+from time import time
 
 
 class RequestResponseTimeMiddleware:
@@ -8,9 +7,12 @@ class RequestResponseTimeMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        # start = time()
+        start = time()
         response = self.get_response(request)
-        # end = time()
+        end = time()
+        time_result = str(end - start)
         # print(f'Total time: {end - start}')
-        RequestResponseLog.objects.create(path=request.path, request_method=request.method, time=timezone.now())
+        RequestResponseLog.objects.create(path=request.path,
+                                          request_method=request.method,
+                                          time=time_result)
         return response
