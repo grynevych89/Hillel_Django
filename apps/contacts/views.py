@@ -26,29 +26,29 @@ class ContactUsCreateView(CreateView):
         'message'
     )
 
-    # def _send_mail(self):
-    #     subject = 'User ContactUs'
-    #     recipient = 'test@gd-agency.com.ua'
-    #     message = f'''
-    #     Спасибо за обращение! Мы свяжемся с Вами в ближайшее время.
-    #     Ваши введенные данны из формы:
-    #         Request from: {self.object.name},
-    #         Reply to email: {self.object.email_from},
-    #         Subject: {self.object.subject},
-    #         Body: {self.object.message}
-    #     '''
-    #     send_mail(
-    #         subject,
-    #         message,
-    #         recipient,
-    #         [self.object.email_from, recipient],
-    #         fail_silently=False,
-    #     )
-    #
-    # def form_valid(self, form):
-    #     redirect = super().form_valid(form)
-    #     self._send_mail()
-    #     return redirect
+    def _send_mail(self):
+        subject = 'User ContactUs'
+        recipient = 'test@gd-agency.com.ua'
+        message = f'''
+        Спасибо за обращение! Мы свяжемся с Вами в ближайшее время.
+        Ваши введенные данны из формы:
+            Request from: {self.object.name},
+            Reply to email: {self.object.email_from},
+            Subject: {self.object.subject},
+            Body: {self.object.message}
+        '''
+        send_mail(
+            subject,
+            message,
+            recipient,
+            [self.object.email_from, recipient],
+            fail_silently=False,
+        )
+
+    def form_valid(self, form):
+        redirect = super().form_valid(form)
+        self._send_mail()
+        return redirect
 
 
 class ContactUsUpdateView(UpdateView):

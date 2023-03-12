@@ -1,6 +1,6 @@
-from django.urls import path, include, reverse_lazy
-from accounts.views import ProfileView
+from django.urls import path, reverse_lazy
 from django.contrib.auth import views as auth_views
+from accounts.views import ProfileView
 from accounts import views
 
 urlpatterns = [

@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
-from django.views.generic import UpdateView, CreateView
+from django.views.generic import UpdateView
 from accounts.forms import NewUserForm
 
 
