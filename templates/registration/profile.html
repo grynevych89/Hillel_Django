@@ -1,14 +1,17 @@
 {% extends 'layouts/base.html' %}
 
 {% block title %}
-    Delete Rate
+    Profile
 {% endblock title %}
 
 {% block content %}
-<br>
-    Do you really want to delete rate {{ rate.name }} with id {{ rate.id }}
+    Update Profile
+
     <form method="post">
         {% csrf_token %}
-        <button type="submit">Yes</button>
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+        <p><a href="{% url 'password_change' %}">Password Change</a></p>
     </form>
+
 {% endblock content %}

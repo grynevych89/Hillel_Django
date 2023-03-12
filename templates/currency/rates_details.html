@@ -1,32 +1,44 @@
 {% extends 'layouts/base.html' %}
 
 {% block title %}
-    Rates
+    Rate Detail
 {% endblock title %}
 
 {% block content %}
-<div class="main-box">
-    <h4>CURRENCY {{ rate.id }}:</h4>
-    <table class="my-table">
-        <tr>
-            <th><b>currency:</b></th>
-            <th><b>sell:</b></th>
-            <th><b>buy:</b></th>
-            <th><b>source:</b></th>
-            <th><b>created:</b></th>
-            <th></th>
-            <th></th>
-        </tr>
-        <tr>
-            <td>{{ rate.get_currency_display }}</td>
-            <td>{{ rate.sell }}</td>
-            <td>{{ rate.buy }}</td>
-            <td>{{ rate.source }}</td>
-            <td>{{ rate.created }}</td>
-            <td><a href="{% url 'rate-update' rate.id %}">Update</a></td>
-            <td><a href="{% url 'rate-delete' rate.id %}">Delete</a></td>
-        </tr>
-    </table>
-</div>
+    {% if not user.is_authenticated %}
+        <div class="main-box">
+            <h1>Вам не доступен просмотр содержимого данной страницы!</h1>
+            <a href="javascript:history.back()" class="not__button button">
+                <span class="button__text">Назад</span>
+            </a>
+        </div>
+    {% else %}
+        <div class="main-box">
+            <h4>Rate {{ rate.id }}:</h4>
+            <table class="my-table">
+                <tr>
+                    <th><b>currency:</b></th>
+                    <th><b>sell:</b></th>
+                    <th><b>buy:</b></th>
+                    <th><b>source:</b></th>
+                    <th><b>created:</b></th>
+                    {% if user.is_superuser %}
+                        <th></th>
+                        <th></th>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <td>{{ rate.get_currency_display }}</td>
+                    <td>{{ rate.sell }}</td>
+                    <td>{{ rate.buy }}</td>
+                    <td>{{ rate.source }}</td>
+                    <td>{{ rate.created }}</td>
+                    {% if user.is_superuser %}
+                        <td><a href="{% url 'rate-update' rate.id %}">Update</a></td>
+                        <td><a href="{% url 'rate-delete' rate.id %}">Delete</a></td>
+                    {% endif %}
+                </tr>
+            </table>
+        </div>
+    {% endif %}
 {% endblock content %}
-

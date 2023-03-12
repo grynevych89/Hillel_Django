@@ -6,7 +6,7 @@
 
 {% block content %}
 <br>
-    Do you really want to delete contact with id {{ contactus.id }}
+    Do you really want to delete contact {{ contactus.name }} with id {{ contactus.id }}
     <form method="post">
         {% csrf_token %}
         <button type="submit">Yes</button>

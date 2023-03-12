@@ -24,3 +24,11 @@ body {
 .my-table tr, th, td {
     border: 1px solid silver;
 }
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
