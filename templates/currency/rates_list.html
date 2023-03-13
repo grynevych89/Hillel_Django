@@ -1,36 +1,42 @@
 {% extends 'layouts/base.html' %}
 
 {% block title %}
-    Rates
+    Rates List
 {% endblock title %}
 
 {% block content %}
-<div class="main-box">
-    <h4>CURRENCY:</h4>
-    <a href="{% url 'rate-create' %}">Create new rates</a><br>
-    <table class="my-table">
-        <tr>
-            <th><b>currency:</b></th>
-            <th><b>sell:</b></th>
-            <th><b>buy:</b></th>
-            <th><b>source:</b></th>
-            <th><b>created:</b></th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-    {% for rate in object_list %}
-        <tr>
-            <td>{{ rate.get_currency_display }}</td>
-            <td>{{ rate.sell }}</td>
-            <td>{{ rate.buy }}</td>
-            <td>{{ rate.source }}</td>
-            <td>{{ rate.created }}</td>
-            <td><a href="{% url 'rate-detail' rate.id %}">Details</a></td>
-            <td><a href="{% url 'rate-update' rate.id %}">Update</a></td>
-            <td><a href="{% url 'rate-delete' rate.id %}">Delete</a></td>
-        </tr>
-    {% endfor %}
-    </table>
-</div>
+    <div class="main-box">
+        <h4>RATE:</h4>
+        {% if user.is_authenticated %}
+            <a href="{% url 'rate-create' %}">Create new rates</a><br>
+        {% endif %}
+        <table class="my-table">
+            <tr>
+                <th><b>currency:</b></th>
+                <th><b>sell:</b></th>
+                <th><b>buy:</b></th>
+                <th><b>source:</b></th>
+                <th><b>created:</b></th>
+                <th></th>
+                {% if user.is_superuser %}
+                    <th></th>
+                    <th></th>
+                {% endif %}
+            </tr>
+            {% for rate in object_list %}
+                <tr>
+                    <td>{{ rate.get_currency_display }}</td>
+                    <td>{{ rate.sell }}</td>
+                    <td>{{ rate.buy }}</td>
+                    <td>{{ rate.source }}</td>
+                    <td>{{ rate.created }}</td>
+                    <td><a href="{% url 'rate-detail' rate.id %}">Details</a></td>
+                    {% if user.is_superuser %}
+                        <td><a href="{% url 'rate-update' rate.id %}">Update</a></td>
+                        <td><a href="{% url 'rate-delete' rate.id %}">Delete</a></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock content %}

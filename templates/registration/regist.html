@@ -1,14 +1,16 @@
 {% extends 'layouts/base.html' %}
 
 {% block title %}
-    Delete Rate
+    Registration
 {% endblock title %}
 
 {% block content %}
-<br>
-    Do you really want to delete rate {{ rate.name }} with id {{ rate.id }}
+    Registration Profile
+
     <form method="post">
         {% csrf_token %}
-        <button type="submit">Yes</button>
+        {{ register_form.as_p }}
+        <button type="submit">Submit</button>
     </form>
+
 {% endblock content %}

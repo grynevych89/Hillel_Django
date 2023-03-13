@@ -9,5 +9,8 @@ migrate:
 makemigrations:
 	$(manage_py) makemigrations
 
+createsuperuser:
+	$(manage_py) createsuperuser
+
 shell:
 	$(manage_py) shell_plus --print-sql

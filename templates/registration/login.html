@@ -1,14 +1,17 @@
 {% extends 'layouts/base.html' %}
 
 {% block title %}
-    Delete Rate
+    Login
 {% endblock title %}
 
 {% block content %}
-<br>
-    Do you really want to delete rate {{ rate.name }} with id {{ rate.id }}
+    Login
+
     <form method="post">
         {% csrf_token %}
-        <button type="submit">Yes</button>
+        {{ form.as_p }}
+        <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+        <button type="submit">Login</button>
     </form>
+
 {% endblock content %}
