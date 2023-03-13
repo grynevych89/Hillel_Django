@@ -5,14 +5,6 @@
 {% endblock title %}
 
 {% block content %}
-    {% if not user.is_authenticated %}
-        <div class="main-box">
-            <h1>Вам не доступен просмотр содержимого данной страницы!</h1>
-            <a href="javascript:history.back()" class="not__button button">
-                <span class="button__text">Назад</span>
-            </a>
-        </div>
-    {% else %}
         <div class="main-box">
             <h4>Rate {{ rate.id }}:</h4>
             <table class="my-table">
@@ -40,5 +32,5 @@
                 </tr>
             </table>
         </div>
-    {% endif %}
+
 {% endblock content %}
