@@ -19,13 +19,14 @@
                         |
                         <a href="{% url 'login' %}">Логин</a>
                         |
-                        <a href="{% url 'regist' %}">Регистрация</a>
+                        <a href="{% url 'account:regist' %}">Регистрация</a>
                         |
                     {% else %}
-                        Hi, {{ request.user.username }}!
-                        <a href="{% url 'profile' %}">Profile</a>
+                        Hi, <u><b>{{ request.user.username }}!</b></u>
                         |
-                        <a href="{% url 'password_change' %}">Password Change</a>
+                        <a href="{% url 'account:profile' %}">Profile</a>
+                        |
+                        <a href="{% url 'account:password_change' %}">Password Change</a>
                         |
                         {% if user.is_superuser %}
                         <a href="/admin" target="_blank">Admin Panel</a>

@@ -4,6 +4,8 @@ from django.core.mail import send_mail
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
+from root import settings
+
 
 class ContactUsListView(ListView):
     template_name = 'contacts/contacts_list.html'
@@ -28,7 +30,7 @@ class ContactUsCreateView(CreateView):
 
     def _send_mail(self):
         subject = 'User ContactUs'
-        recipient = 'test@gd-agency.com.ua'
+        recipient = settings.DEFAULT_FROM_EMAIL
         message = f'''
         Спасибо за обращение! Мы свяжемся с Вами в ближайшее время.
         Ваши введенные данны из формы:
