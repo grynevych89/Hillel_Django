@@ -1,10 +1,8 @@
-from django.contrib import messages
-from django.contrib.auth import get_user_model, login
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
-from django.views.generic import UpdateView
-from accounts.forms import NewUserForm
+from django.views.generic import UpdateView, RedirectView, CreateView
+from accounts.forms import UserSignUpForm
+from django.contrib.auth import get_user_model
 
 
 class ProfileView(LoginRequiredMixin, UpdateView):
@@ -20,16 +18,23 @@ class ProfileView(LoginRequiredMixin, UpdateView):
         return self.request.user
 
 
-def register_request(request):
-    if request.method == "POST":
-        form = NewUserForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            messages.success(request, "Registration successful.")
-            return redirect("profile")
-        messages.error(request, "Unsuccessful registration. Invalid information.")
-    form = NewUserForm()
-    return render(request=request,
-                  template_name="registration/regist.html",
-                  context={"register_form": form})
+class UserSignUpView(CreateView):
+    queryset = get_user_model().objects.all()
+    template_name = 'registration/regist.html'
+    success_url = reverse_lazy('login')
+    form_class = UserSignUpForm
+
+
+class UserActivateView(RedirectView):
+    pattern_name = 'login'
+
+    def get_redirect_url(self, *args, **kwargs):
+        unique_id = kwargs.pop('unique_id')
+
+        user = get_user_model().objects.filter(unique_id=unique_id).only('id').first()
+        if user is not None:
+            user.is_active = True
+            user.save(update_fields=['is_active'])
+
+        url = super().get_redirect_url(*args, **kwargs)
+        return url

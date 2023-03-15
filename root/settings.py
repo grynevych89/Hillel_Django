@@ -137,11 +137,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_REDIRECT_URL = reverse_lazy('index')
 LOGOUT_REDIRECT_URL = reverse_lazy('index')
 LOGIN_URL = reverse_lazy('login')
+AUTH_USER_MODEL = 'accounts.User'
+
+HOST = 'localhost:8000'
+HTTP_SCHEMA = 'http'
 
 #  Настройка почты:
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'test@gd-agency.com.ua'
 # EMAIL_USE_TLS = True
-# EMAIL_HOST = '***'
+# EMAIL_HOST = 'rocket-cp1.hostsila.org'
 # EMAIL_PORT = 587
-# EMAIL_HOST_USER = '***'
+# EMAIL_HOST_USER = DEFAULT_FROM_EMAIL
 # EMAIL_HOST_PASSWORD = '***'
