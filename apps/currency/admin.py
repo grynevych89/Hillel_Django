@@ -1,6 +1,6 @@
 from django.contrib import admin
 from rangefilter.filters import DateRangeFilter
-from currency.models import Rate
+from currency.models import Rate, Source
 
 
 @admin.register(Rate)
@@ -17,3 +17,6 @@ class RateAdmin(admin.ModelAdmin):
         'buy',
         'sell',
     )
+
+
+admin.site.register(Source)
