@@ -13,8 +13,15 @@ class Rate(models.Model):
     )
     sell = models.DecimalField('Продаж', max_digits=6, decimal_places=2)
     buy = models.DecimalField('Покупка', max_digits=6, decimal_places=2)
-    source = models.CharField('Банк', max_length=25)
     created = models.DateTimeField('Дата створення', auto_now_add=True)
+    source = models.ForeignKey('currency.Source', on_delete=models.CASCADE)
 
     def __str__(self):
         return f'Currency: {self.get_currency_display()}'
+
+
+class Source(models.Model):
+    title = models.CharField('Банк', max_length=64)
+
+    def __str__(self):
+        return self.title

@@ -13,6 +13,8 @@ urlpatterns = [
     path('source/', include('source.urls')),
     path('contacts/', include('contacts.urls')),
     path('accounts/', include('accounts.urls')),
+
+    path('__debug__/', include('debug_toolbar.urls')),
 ]
 
 if settings.DEBUG:
