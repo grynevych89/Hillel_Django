@@ -1,42 +1,26 @@
-    <header class="p-3 bg-dark text-white">
-        <nav>
-            <div class="row">
-                <div class="col-md-8 left">
-                    |
-                    <a href="{% url 'index' %}">Главная</a>
-                    |
-                    <a href="{% url 'rate-list' %}">Rates</a>
-                    |
-                    <a href="{% url 'source-list' %}">Sources</a>
-                    |
-                    <a href="{% url 'contact-list' %}">Contacts</a>
-                    |
-                </div>
-                <div class="col-md-4 right">
-                    {% if not request.user.is_authenticated %}
-                        |
-                        Hi, Guest!
-                        |
-                        <a href="{% url 'login' %}">Логин</a>
-                        |
-                        <a href="{% url 'account:regist' %}">Регистрация</a>
-                        |
-                    {% else %}
-                        Hi, <u><b>{{ request.user.username }}!</b></u>
-                        |
-                        <a href="{% url 'account:profile' %}">Profile</a>
-                        |
-                        <a href="{% url 'account:password_change' %}">Password Change</a>
-                        |
-                        {% if user.is_superuser %}
-                        <a href="/admin" target="_blank">Admin Panel</a>
-                            {% endif %}
-                        |
-                        <a href="{% url 'logout' %}">Logout</a>
-                        |
-                    {% endif %}
+<div class="container">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+        <ul class="nav col-6 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="{% url 'index' %}" class="nav-link px-2 link-secondary">Главная</a></li>
+            <li><a href="{% url 'rate-list' %}" class="nav-link px-2 link-dark">Rates</a></li>
+            <li><a href="{% url 'source-list' %}" class="nav-link px-2 link-dark">Sources</a></li>
+            <li><a href="{% url 'contact-list' %}" class="nav-link px-2 link-dark">Contacts</a></li>
+        </ul>
 
-                </div>
-            </div>
-        </nav>
+        <div class="col-md-6 text-end">
+            {% if not request.user.is_authenticated %}
+                Hi, Guest!
+                <a class="btn btn-primary" href="{% url 'login' %}" role="button">Логин</a>
+                <a class="btn btn-primary" href="{% url 'account:regist' %}" role="button">Регистрация</a>
+            {% else %}
+                Hi, {{ request.user.username }}!
+                <a class="btn btn-primary" href="{% url 'account:profile' %}" role="button">Profile</a>
+                <a class="btn btn-primary" href="{% url 'account:password_change' %}" role="button">Password Change</a>
+                {% if user.is_superuser %}
+                    <a class="btn btn-primary" href="/admin" target="_blank" role="button">Admin Panel</a>
+                {% endif %}
+                <a class="btn btn-primary" href="{% url 'logout' %}" role="button">Logout</a>
+            {% endif %}
+        </div>
     </header>
+</div>

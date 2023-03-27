@@ -1,17 +1,18 @@
 {% extends 'layouts/base.html' %}
-
+{% load crispy_forms_tags %}
 {% block title %}
     Update Rates
 {% endblock title %}
 
 {% block content %}
-<br>
-    Update Rate Form
-
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
-    </form>
-
+    <div class="row col-4">
+        <h1 style="color: blue">Update Rate Form</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <a class="btn btn-primary"
+            href="javascript:history.back()">Back</a>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
 {% endblock content %}

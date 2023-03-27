@@ -5,26 +5,38 @@
 {% endblock title %}
 
 {% block content %}
-<div class="main-box">
-    <h4>SOURCE {{ source.id }}:</h4>
-    <table class="my-table">
-        <tr>
-            <th><b>name:</b></th>
-            <th><b>text:</b></th>
-            <th><b>source_url:</b></th>
-            <th><b>price:</b></th>
-            <th></th>
-            <th></th>
-        </tr>
-        <tr>
-            <td>{{ source.name }}</td>
-            <td>{{ source.text|safe }}</td>
-            <td>{{ source.source_url }}</td>
-            <td>{{ source.price }}</td>
-            <td><a href="{% url 'source-update' source.id %}">Update</a></td>
-            <td><a href="{% url 'source-delete' source.id %}">Delete</a></td>
-        </tr>
-    </table>
-</div>
-{% endblock content %}
+    <div class="row col-8 ">
+        <h4 style="color: blue">SOURCE {{ source.id }}:</h4>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col"><b>#</b></th>
+                <th scope="col"><b>logo:</b></th>
+                <th scope="col"><b>name:</b></th>
+                <th scope="col"><b>text:</b></th>
+                <th scope="col"><b>source_url:</b></th>
+                <th scope="col"><b>price:</b></th>
+                {% if user.is_superuser %}
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                {% endif %}
+            </tr>
+            </thead>
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td><img src="{{ source.logo_url }}" width="100" height="100"></td>
+                <td>{{ source.name }}</td>
+                <td>{{ source.text }}</td>
+                <td>{{ source.source_url }}</td>
+                <td>{{ source.price }}</td>
+                {% if user.is_superuser %}
+                    <td><a class="btn btn-warning" href="{% url 'source-update' source.id %}">Update</a></td>
+                    <td><a class="btn btn-danger" href="{% url 'source-delete' source.id %}">Delete</a></td>
+                {% endif %}
+            </tr>
+        </table>
+    </div>
+    <a class="btn btn-primary"
+       href="javascript:history.back()">Back</a>
 
+{% endblock content %}

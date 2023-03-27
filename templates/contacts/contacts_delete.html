@@ -5,10 +5,15 @@
 {% endblock title %}
 
 {% block content %}
-<br>
-    Do you really want to delete contact {{ contactus.name }} with id {{ contactus.id }}
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">Yes</button>
-    </form>
+    <div class="row col-12">
+        <h4 style="color: blue">Do you really want to delete contact {{ contactus.name }} with
+            id {{ contactus.id }}</h4>
+
+        <form method="post">
+            {% csrf_token %}
+            <a class="btn btn-primary"
+               href="javascript:history.back()">Back</a>
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+    </div>
 {% endblock content %}

@@ -8,3 +8,5 @@ flake8-builtins
 flake8-print
 
 django-admin-rangefilter
+django-crispy-forms
+crispy-bootstrap5

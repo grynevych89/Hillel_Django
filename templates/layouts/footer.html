@@ -1,3 +1,14 @@
 <footer>
-    <h5>Copyright: &copy; Grynevych Mykola - Kyiv, 2023</h5>
+    <div class="container">
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="{% url 'index' %}" class="nav-link px-2 text-muted">Главная</a></li>
+                <li class="nav-item"><a href="{% url 'rate-list' %}" class="nav-link px-2 text-muted">Rates</a></li>
+                <li class="nav-item"><a href="{% url 'source-list' %}" class="nav-link px-2 text-muted">Sources</a></li>
+                <li class="nav-item"><a href="{% url 'contact-list' %}" class="nav-link px-2 text-muted">Contacts</a></li>
+
+            </ul>
+            <p class="text-center text-muted">Copyright: &copy; Grynevych Mykola - Kyiv, 2023</p>
+        </footer>
+    </div>
 </footer>

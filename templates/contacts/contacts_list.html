@@ -5,35 +5,47 @@
 {% endblock title %}
 
 {% block content %}
-<div class="main-box">
-    <h4>Contacts Us:</h4>
-    <a href="{% url 'contact-create' %}">Create new contact</a><br>
-    <table class="my-table">
-        <tr>
-            <th><b>id:</b></th>
-            <th><b>name:</b></th>
-            <th><b>subject:</b></th>
-            <th><b>email_from:</b></th>
-            <th><b>message:</b></th>
-            <th><b>created:</b></th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-    {% for contact in object_list %}
-        <tr>
-            <td>{{ contact.id }}</td>
-            <td>{{ contact.name }}</td>
-            <td>{{ contact.subject }}</td>
-            <td>{{ contact.email_from }}</td>
-            <td>{{ contact.message }}</td>
-            <td>{{ contact.created }}</td>
-            <td><a href="{% url 'contact-detail' contact.id %}">Details</a></td>
-            <td><a href="{% url 'contact-update' contact.id %}">Update</a></td>
-            <td><a href="{% url 'contact-delete' contact.id %}">Delete</a></td>
-        </tr>
-    {% endfor %}
-    </table>
-</div>
+    <div class="container col-2">
+        <h1 style="color: blue">Contacts</h1>
+        {% if user.is_authenticated %}
+            <a class="btn btn-primary" href="{% url 'rate-create' %}" role="button">Create new contact</a>
+        {% endif %}
+    </div>
+    <br>
+    <div class="row col-12">
+        <table class="table table-hover">
+            <thead class="table-dark">
+            <tr>
+                <th scope="col"><b>#</b></th>
+                <th scope="col"><b>id:</b></th>
+                <th scope="col"><b>name:</b></th>
+                <th scope="col"><b>subject:</b></th>
+                <th scope="col"><b>email_from:</b></th>
+                <th scope="col"><b>message:</b></th>
+                <th scope="col"><b>created:</b></th>
+                <th scope="col"></th>
+                {% if user.is_superuser %}
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                {% endif %}
+            </tr>
+            </thead>
+            {% for contact in object_list %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ contact.id }}</td>
+                    <td>{{ contact.name }}</td>
+                    <td>{{ contact.subject }}</td>
+                    <td>{{ contact.email_from }}</td>
+                    <td>{{ contact.message }}</td>
+                    <td>{{ contact.created }}</td>
+                    <td><a class="btn btn-primary" href="{% url 'contact-detail' contact.id %}">Details</a></td>
+                    {% if user.is_superuser %}
+                        <td><a class="btn btn-warning" href="{% url 'contact-update' contact.id %}">Update</a></td>
+                        <td><a class="btn btn-danger" href="{% url 'contact-delete' contact.id %}">Delete</a></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock content %}
-
