@@ -10,5 +10,6 @@ class SourceForm(forms.ModelForm):
             'name',
             'text',
             'source_url',
-            'price'
+            'price',
+            'logo'
         )

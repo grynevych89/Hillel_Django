@@ -5,30 +5,45 @@
 {% endblock title %}
 
 {% block content %}
-<div class="main-box">
-    <h4>SOURCES:</h4>
-    <a href="{% url 'source-create' %}">Create new source</a><br>
-    <table class="my-table">
-        <tr>
-            <th><b>name:</b></th>
-            <th><b>text:</b></th>
-            <th><b>source_url:</b></th>
-            <th><b>price:</b></th>
-            <th></th>
-            <th></th>
-        </tr>
-    {% for source in object_list %}
-        <tr>
-            <td>{{ source.name }}</td>
-            <td>{{ source.text|safe }}</td>
-            <td>{{ source.source_url }}</td>
-            <td>{{ source.price }}</td>
-            <td><a href="{% url 'source-detail' source.id %}">Details</a></td>
-            <td><a href="{% url 'source-update' source.id %}">Update</a></td>
-            <td><a href="{% url 'source-delete' source.id %}">Delete</a></td>
-        </tr>
-    {% endfor %}
-    </table>
-</div>
+    <div class="container col-2">
+        <h1 style="color: blue">SOURCES</h1>
+        {% if user.is_authenticated %}
+            <a class="btn btn-primary" href="{% url 'source-create' %}" role="button">Create new source</a>
+        {% endif %}
+    </div>
+    <br>
+    <div class="row col-12">
+        <table class="table table-hover">
+            <thead class="table-dark">
+            <tr>
+                <th scope="col"><b>#</b></th>
+                <th scope="col"><b>logo:</b></th>
+                <th scope="col"><b>name:</b></th>
+                <th scope="col"><b>text:</b></th>
+                <th scope="col"><b>source_url:</b></th>
+                <th scope="col"><b>price:</b></th>
+                <th scope="col"></th>
+                {% if user.is_superuser %}
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                {% endif %}
+            </tr>
+            </thead>
+            {% for source in object_list %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td><img src="{{ source.logo_url }}" width="100" height="100"></td>
+                    <td>{{ source.name }}</td>
+                    <td>{{ source.text }}</td>
+                    <td>{{ source.source_url }}</td>
+                    <td>{{ source.price }}$</td>
+                    <td><a class="btn btn-primary" href="{% url 'source-detail' source.id %}">Details</a></td>
+                    {% if user.is_superuser %}
+                        <td><a class="btn btn-warning" href="{% url 'source-update' source.id %}">Update</a></td>
+                        <td><a class="btn btn-danger" href="{% url 'source-delete' source.id %}">Delete</a></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock content %}
-

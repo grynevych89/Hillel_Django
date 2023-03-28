@@ -1,17 +1,20 @@
 {% extends 'layouts/base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %}
     Profile
 {% endblock title %}
 
 {% block content %}
-    Update Profile
-
-    <form method="post">
+    <img src="{{ object.avatar_url }}" width="100" height="100"><br>
+    <div class="row col-4">
+    <h1 style="color: blue">Profile</h1>
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
-        <p><a href="{% url 'password_change' %}">Password Change</a></p>
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-success">Submit</button>
+        <a class="btn btn-primary"
+            href="{% url 'account:password_change' %}">Password Change</a>
     </form>
-
+</div>
 {% endblock content %}

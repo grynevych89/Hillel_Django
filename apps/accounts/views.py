@@ -11,7 +11,8 @@ class ProfileView(LoginRequiredMixin, UpdateView):
     queryset = get_user_model().objects.all()
     fields = (
         'first_name',
-        'last_name'
+        'last_name',
+        'avatar'
     )
 
     def get_object(self, queryset=None):

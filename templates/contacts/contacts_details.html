@@ -5,29 +5,39 @@
 {% endblock title %}
 
 {% block content %}
-<div class="main-box">
-    <h4>Contact {{ contactus.id }}:</h4>
-    <table class="my-table">
-        <tr>
-            <th><b>id:</b></th>
-            <th><b>name:</b></th>
-            <th><b>subject:</b></th>
-            <th><b>email_from:</b></th>
-            <th><b>message:</b></th>
-            <th><b>created:</b></th>
-            <th></th>
-            <th></th>
-        </tr>
-        <tr>
-            <td>{{ contactus.id }}</td>
-            <td>{{ contactus.name }}</td>
-            <td>{{ contactus.subject }}</td>
-            <td>{{ contactus.email_from }}</td>
-            <td>{{ contactus.message }}</td>
-            <td>{{ contactus.created }}</td>
-            <td><a href="{% url 'contact-update' contactus.id %}">Update</a></td>
-            <td><a href="{% url 'contact-delete' contactus.id %}">Delete</a></td>
-        </tr>
-    </table>
-</div>
+    <div class="row col-12 ">
+        <h4 style="color: blue">Contact {{ contactus.id }}:</h4>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col"><b>#</b></th>
+                <th scope="col"><b>id:</b></th>
+                <th scope="col"><b>name:</b></th>
+                <th scope="col"><b>subject:</b></th>
+                <th scope="col"><b>email_from:</b></th>
+                <th scope="col"><b>message:</b></th>
+                <th scope="col"><b>created:</b></th>
+                {% if user.is_superuser %}
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                {% endif %}
+            </tr>
+            </thead>
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ contactus.id }}</td>
+                <td>{{ contactus.name }}</td>
+                <td>{{ contactus.subject }}</td>
+                <td>{{ contactus.email_from }}</td>
+                <td>{{ contactus.message }}</td>
+                <td>{{ contactus.created }}</td>
+                {% if user.is_superuser %}
+                    <td><a class="btn btn-warning" href="{% url 'contact-update' contactus.id %}">Update</a></td>
+                    <td><a class="btn btn-danger" href="{% url 'contact-delete' contactus.id %}">Delete</a></td>
+                {% endif %}
+            </tr>
+        </table>
+    </div>
+    <a class="btn btn-primary"
+       href="javascript:history.back()">Back</a>
 {% endblock content %}
