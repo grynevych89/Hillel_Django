@@ -8,7 +8,7 @@
     <div class="container col-2">
         <h1 style="color: blue">Contacts</h1>
         {% if user.is_authenticated %}
-            <a class="btn btn-primary" href="{% url 'rate-create' %}" role="button">Create new contact</a>
+            <a class="btn btn-primary" href="{% url 'contact-create' %}" role="button">Create new contact</a>
         {% endif %}
     </div>
     <br>
