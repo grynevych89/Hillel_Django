@@ -3,7 +3,7 @@ from contacts.forms import ContactUsForm
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from root import settings
+# from root import settings
 
 
 class ContactUsListView(ListView):
@@ -29,7 +29,7 @@ class ContactUsCreateView(CreateView):
 
     def _send_mail(self):
         subject = 'User ContactUs'
-        recipient = settings.DEFAULT_FROM_EMAIL
+        # recipient = settings.DEFAULT_FROM_EMAIL
         message = f'''
         Спасибо за обращение! Мы свяжемся с Вами в ближайшее время.
         Ваши введенные данны из формы:
@@ -45,7 +45,7 @@ class ContactUsCreateView(CreateView):
         0 - 8.59 | 9.00 - 19.00 | 19.01 23.59
            9.00  |    send      | 9.00 next day
         '''
-        from datetime import datetime, timedelta
+        # from datetime import datetime, timedelta
         # send_mail.apply_async(
         #     kwargs={'subject': subject, 'message': message},
         #     # countdown=20

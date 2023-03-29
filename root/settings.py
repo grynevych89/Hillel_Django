@@ -152,7 +152,7 @@ HOST = 'localhost:8000'
 HTTP_SCHEMA = 'http'
 
 
-#Celery
+# Celery
 CELERY_BROKER_URL = 'amqp://localhost'
 
 
