@@ -151,6 +151,11 @@ AUTH_USER_MODEL = 'accounts.User'
 HOST = 'localhost:8000'
 HTTP_SCHEMA = 'http'
 
+
+# Celery
+CELERY_BROKER_URL = 'amqp://localhost'
+
+
 #  Настройка почты:
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_FROM_EMAIL = 'test@gd-agency.com.ua'

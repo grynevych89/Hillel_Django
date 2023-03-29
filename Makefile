@@ -14,3 +14,6 @@ createsuperuser:
 
 shell:
 	$(manage_py) shell_plus --print-sql
+
+worker:
+	celery -A root worker -l info --autoscale=0,10
