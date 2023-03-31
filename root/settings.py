@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 import sys
-
+from celery.schedules import crontab
 from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django_extensions',
     'debug_toolbar',
     'rangefilter',
     'crispy_forms',
@@ -154,6 +155,13 @@ HTTP_SCHEMA = 'http'
 
 # Celery
 CELERY_BROKER_URL = 'amqp://localhost'
+
+CELERY_BEAT_SCHEDULE = {
+    'debug': {
+        'task': 'currency.tasks.slow',
+        'schedule': crontab(minute='*/15')
+    }
+}
 
 
 #  Настройка почты:

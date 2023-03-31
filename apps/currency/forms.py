@@ -1,5 +1,5 @@
 from django import forms
-from currency.models import Rate
+from currency.models import Rate, RateSource
 
 
 class RateForm(forms.ModelForm):
@@ -8,7 +8,16 @@ class RateForm(forms.ModelForm):
         model = Rate
         fields = (
             'buy',
-            'sell',
+            'sale',
             'source',
             'currency'
+        )
+
+
+class SourceForm(forms.ModelForm):
+
+    class Meta:
+        model = RateSource
+        fields = (
+            'title',
         )
