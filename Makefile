@@ -17,3 +17,6 @@ shell:
 
 worker:
 	celery -A root worker -l info --autoscale=0,10
+
+beat:
+	celery -A root beat -l info

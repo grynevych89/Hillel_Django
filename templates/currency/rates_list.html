@@ -8,7 +8,7 @@
     <div class="container col-2">
         <h1 style="color: blue">Rates</h1>
         {% if user.is_authenticated %}
-            <a class="btn btn-primary" href="{% url 'contact-create' %}" role="button">Create new rates</a>
+            <a class="btn btn-primary" href="{% url 'rate-create' %}" role="button">Create new rates</a>
         {% endif %}
     </div>
     <br>
@@ -18,7 +18,7 @@
             <tr>
                 <th scope="col"><b>#</b></th>
                 <th scope="col"><b>currency:</b></th>
-                <th scope="col"><b>sell:</b></th>
+                <th scope="col"><b>sale:</b></th>
                 <th scope="col"><b>buy:</b></th>
                 <th scope="col"><b>source:</b></th>
                 <th scope="col"><b>created:</b></th>
@@ -33,7 +33,7 @@
                 <tr>
                     <th scope="row">{{ forloop.counter }}</th>
                     <td>{{ rate.get_currency_display }}</td>
-                    <td>{{ rate.sell }}</td>
+                    <td>{{ rate.sale }}</td>
                     <td>{{ rate.buy }}</td>
                     <td>{{ rate.source }}</td>
                     <td>{{ rate.created }}</td>
