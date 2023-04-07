@@ -1,14 +1,24 @@
 from contacts.models import ContactUs
 from contacts.forms import ContactUsForm
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-
+from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
+from django_filters.views import FilterView
+from contacts.filters import ContactsFilter
 # from root import settings
 
 
-class ContactUsListView(ListView):
+class ContactUsListView(FilterView):
     template_name = 'contacts/contacts_list.html'
     queryset = ContactUs.objects.all()
+    paginate_by = 2
+    filterset_class = ContactsFilter
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter_pagination'] = '&'.join(
+            f'{key}={value}' for key, value in self.request.GET.items() if key != 'page'
+        )
+        return context
 
 
 class ContactUsDetailView(DetailView):
