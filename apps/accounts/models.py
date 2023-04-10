@@ -12,6 +12,12 @@ class User(AbstractUser):
     unique_id = models.UUIDField(default=uuid.uuid4, unique=True)
     username = models.CharField(unique=True, max_length=128)
     email = models.EmailField(unique=True)
+    phone = models.CharField(
+        max_length=64,
+        unique=True,
+        null=True,
+        blank=True,
+    )
     avatar = models.FileField(
         default=None,
         null=True,

@@ -1,5 +1,5 @@
 {% extends 'layouts/base.html' %}
-
+{% load crispy_forms_tags %}
 {% block title %}
     Rates List
 {% endblock title %}
@@ -12,16 +12,22 @@
         {% endif %}
     </div>
     <br>
+    <form method="get" class="col-6">
+        {{ filter.form|crispy }}
+        <button type="submit" class="btn btn-success">Відправити</button>
+        <td><a class="btn btn-danger" href="{% url 'rate-list' %}">Оновити</a></td>
+    </form>
+    <br>
     <div class="row col-12">
         <table class="table table-hover">
             <thead class="table-dark">
             <tr>
                 <th scope="col"><b>#</b></th>
-                <th scope="col"><b>currency:</b></th>
-                <th scope="col"><b>sale:</b></th>
-                <th scope="col"><b>buy:</b></th>
-                <th scope="col"><b>source:</b></th>
-                <th scope="col"><b>created:</b></th>
+                <th scope="col"><b>Валюта:</b></th>
+                <th scope="col"><b>Покупка:</b></th>
+                <th scope="col"><b>Продаж:</b></th>
+                <th scope="col"><b>Банк:</b></th>
+                <th scope="col"><b>Створено:</b></th>
                 <th scope="col"></th>
                 {% if user.is_superuser %}
                     <th scope="col"></th>
@@ -29,12 +35,12 @@
                 {% endif %}
             </tr>
             </thead>
-            {% for rate in object_list %}
+            {% for rate in page_obj %}
                 <tr>
                     <th scope="row">{{ forloop.counter }}</th>
                     <td>{{ rate.get_currency_display }}</td>
-                    <td>{{ rate.sale }}</td>
                     <td>{{ rate.buy }}</td>
+                    <td>{{ rate.sale }}</td>
                     <td>{{ rate.source }}</td>
                     <td>{{ rate.created }}</td>
                     <td><a class="btn btn-primary" href="{% url 'rate-detail' rate.id %}">Details</a></td>
@@ -46,4 +52,5 @@
             {% endfor %}
         </table>
     </div>
+    {% include 'layouts/pagination.html' %}
 {% endblock content %}

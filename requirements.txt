@@ -11,3 +11,4 @@ flake8-print
 django-admin-rangefilter
 django-crispy-forms
 crispy-bootstrap5
+django-filter

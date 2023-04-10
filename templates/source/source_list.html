@@ -1,5 +1,5 @@
 {% extends 'layouts/base.html' %}
-
+{% load crispy_forms_tags %}
 {% block title %}
     Sources List
 {% endblock title %}
@@ -11,6 +11,12 @@
             <a class="btn btn-primary" href="{% url 'source-create' %}" role="button">Create new source</a>
         {% endif %}
     </div>
+    <br>
+    <form method="get" class="col-6">
+        {{ filter.form|crispy }}
+        <button type="submit" class="btn btn-success">Відправити</button>
+        <td><a class="btn btn-danger" href="{% url 'source-list' %}">Оновити</a></td>
+    </form>
     <br>
     <div class="row col-12">
         <table class="table table-hover">
@@ -46,4 +52,5 @@
             {% endfor %}
         </table>
     </div>
+    {% include 'layouts/pagination.html' %}
 {% endblock content %}

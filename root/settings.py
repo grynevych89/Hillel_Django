@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rangefilter',
     'crispy_forms',
     'crispy_bootstrap5',
+    'django_filters',
 
     'currency',
     'contacts',
