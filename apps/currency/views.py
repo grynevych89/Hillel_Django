@@ -10,7 +10,7 @@ from currency.filters import RateFilter
 class RateListView(FilterView):
     template_name = 'currency/rates_list.html'
     queryset = Rate.objects.all().select_related('source')
-    paginate_by = 2
+    paginate_by = 3
     filterset_class = RateFilter
 
     def get_context_data(self, **kwargs):

@@ -9,7 +9,7 @@ from source.filters import SourceFilter
 class SourceListView(FilterView):
     template_name = 'source/source_list.html'
     queryset = Source.objects.all()
-    paginate_by = 2
+    paginate_by = 4
     filterset_class = SourceFilter
 
     def get_context_data(self, **kwargs):

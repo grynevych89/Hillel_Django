@@ -12,45 +12,70 @@
         {% endif %}
     </div>
     <br>
-    <form method="get" class="col-6">
-        {{ filter.form|crispy }}
-        <button type="submit" class="btn btn-success">Відправити</button>
+    <div>
+        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight">Фільтр =>
+        </button>
         <td><a class="btn btn-danger" href="{% url 'contact-list' %}">Оновити</a></td>
-    </form>
-    <br>
-    <div class="row col-12">
-        <table class="table table-hover">
-            <thead class="table-dark">
-            <tr>
-                <th scope="col"><b>#</b></th>
-                <th scope="col"><b>name:</b></th>
-                <th scope="col"><b>subject:</b></th>
-                <th scope="col"><b>email_from:</b></th>
-                <th scope="col"><b>message:</b></th>
-                <th scope="col"><b>created:</b></th>
-                <th scope="col"></th>
-                {% if user.is_superuser %}
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                {% endif %}
-            </tr>
-            </thead>
-            {% for contact in object_list %}
-                <tr>
-                    <th scope="row">{{ forloop.counter }}</th>
-                    <td>{{ contact.name }}</td>
-                    <td>{{ contact.subject }}</td>
-                    <td>{{ contact.email_from }}</td>
-                    <td>{{ contact.message }}</td>
-                    <td>{{ contact.created }}</td>
-                    <td><a class="btn btn-primary" href="{% url 'contact-detail' contact.id %}">Details</a></td>
-                    {% if user.is_superuser %}
-                        <td><a class="btn btn-warning" href="{% url 'contact-update' contact.id %}">Update</a></td>
-                        <td><a class="btn btn-danger" href="{% url 'contact-delete' contact.id %}">Delete</a></td>
-                    {% endif %}
-                </tr>
-            {% endfor %}
-        </table>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+                <h5 id="offcanvasRightLabel">Фильтр</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <form method="get" class="">
+                    <button type="submit" class="btn btn-success">Відправити</button>
+                    <button type="reset" class="btn btn-danger">Очистити</button>
+                    <br>
+                    <br>
+                    {{ filter.form|crispy }}
+                    <button type="submit" class="btn btn-success">Відправити</button>
+                    <button type="reset" class="btn btn-danger">Очистити</button>
+                </form>
+            </div>
+        </div>
     </div>
-    {% include 'layouts/pagination.html' %}
+
+    <div class="d-flex bd-highlight">
+        <div class="p-2 m-2 bd-highlight col-12">
+            <br>
+            <div class="row col-12">
+                <table class="table table-hover">
+                    <thead class="table-dark">
+                    <tr>
+                        <th scope="col"><b>Им'я:</b></th>
+                        <th scope="col"><b>Тема:</b></th>
+                        <th scope="col"><b>Email:</b></th>
+                        <th scope="col"><b>Повідомлення:</b></th>
+                        <th scope="col"><b>Створено:</b></th>
+                        <th scope="col"></th>
+                        {% if user.is_superuser %}
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        {% endif %}
+                    </tr>
+                    </thead>
+                    {% for contact in object_list %}
+                        <tr>
+                            <td>{{ contact.name }}</td>
+                            <td>{{ contact.subject }}</td>
+                            <td>{{ contact.email_from }}</td>
+                            <td>{{ contact.message }}</td>
+                            <td>{{ contact.created }}</td>
+                            <td><a class="btn btn-primary" href="{% url 'contact-detail' contact.id %}">Details</a></td>
+                            {% if user.is_superuser %}
+                                <td><a class="btn btn-warning" href="{% url 'contact-update' contact.id %}">Update</a>
+                                </td>
+                                <td><a class="btn btn-danger" href="{% url 'contact-delete' contact.id %}">Delete</a>
+                                </td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            {% include 'layouts/pagination.html' %}
+        </div>
+    </div>
 {% endblock content %}

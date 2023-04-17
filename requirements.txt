@@ -12,3 +12,8 @@ django-admin-rangefilter
 django-crispy-forms
 crispy-bootstrap5
 django-filter
+djangorestframework
+djangorestframework-xml
+djangorestframework-yaml
+djangorestframework-simplejwt
+drf-yasg

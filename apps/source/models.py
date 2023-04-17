@@ -7,8 +7,8 @@ def logo_path(instance, filename):
 
 
 class Source(models.Model):
-    name = models.CharField('Название', max_length=64)
-    text = models.TextField('Описание')
+    name = models.CharField('Назва', max_length=64)
+    text = models.TextField('Опис')
     source_url = models.URLField('URL', max_length=255)
     price = models.PositiveIntegerField('Ціна', default=0)
     logo = models.FileField(
