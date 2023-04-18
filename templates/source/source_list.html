@@ -12,45 +12,65 @@
         {% endif %}
     </div>
     <br>
-    <form method="get" class="col-6">
-        {{ filter.form|crispy }}
-        <button type="submit" class="btn btn-success">Відправити</button>
+    <div>
+        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight">Фільтр =>
+        </button>
         <td><a class="btn btn-danger" href="{% url 'source-list' %}">Оновити</a></td>
-    </form>
-    <br>
-    <div class="row col-12">
-        <table class="table table-hover">
-            <thead class="table-dark">
-            <tr>
-                <th scope="col"><b>#</b></th>
-                <th scope="col"><b>logo:</b></th>
-                <th scope="col"><b>name:</b></th>
-                <th scope="col"><b>text:</b></th>
-                <th scope="col"><b>source_url:</b></th>
-                <th scope="col"><b>price:</b></th>
-                <th scope="col"></th>
-                {% if user.is_superuser %}
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                {% endif %}
-            </tr>
-            </thead>
-            {% for source in object_list %}
-                <tr>
-                    <th scope="row">{{ forloop.counter }}</th>
-                    <td><img src="{{ source.logo_url }}" width="100" height="100"></td>
-                    <td>{{ source.name }}</td>
-                    <td>{{ source.text }}</td>
-                    <td>{{ source.source_url }}</td>
-                    <td>{{ source.price }}$</td>
-                    <td><a class="btn btn-primary" href="{% url 'source-detail' source.id %}">Details</a></td>
-                    {% if user.is_superuser %}
-                        <td><a class="btn btn-warning" href="{% url 'source-update' source.id %}">Update</a></td>
-                        <td><a class="btn btn-danger" href="{% url 'source-delete' source.id %}">Delete</a></td>
-                    {% endif %}
-                </tr>
-            {% endfor %}
-        </table>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+                <h5 id="offcanvasRightLabel">Фильтр</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <form method="get" class="">
+                    {{ filter.form|crispy }}
+                    <button type="submit" class="btn btn-success">Відправити</button>
+                    <button type="reset" class="btn btn-danger">Очистити</button>
+                </form>
+            </div>
+        </div>
     </div>
-    {% include 'layouts/pagination.html' %}
+    <div class="d-flex bd-highlight">
+        <div class="p-2 m-2 bd-highlight col-12">
+            <br>
+            <div class="row col-12">
+                <table class="table table-hover">
+                    <thead class="table-dark">
+                    <tr>
+                        <th scope="col"><b>Лого:</b></th>
+                        <th scope="col"><b>Назва:</b></th>
+                        <th scope="col"><b>URL адреса:</b></th>
+                        <th scope="col"><b>Ціна:</b></th>
+                        <th scope="col"><b>Текст:</b></th>
+                        <th scope="col"></th>
+                        {% if user.is_superuser %}
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        {% endif %}
+                    </tr>
+                    </thead>
+                    {% for source in object_list %}
+                        <tr>
+                            <td><img src="{{ source.logo_url }}" width="100" height="100"></td>
+                            <td>{{ source.name }}</td>
+                            <td>{{ source.source_url }}</td>
+                            <td>{{ source.price }}$</td>
+                            <td>{{ source.text }}</td>
+                            <td><a class="btn btn-primary" href="{% url 'source-detail' source.id %}">Details</a></td>
+                            {% if user.is_superuser %}
+                                <td><a class="btn btn-warning" href="{% url 'source-update' source.id %}">Update</a>
+                                </td>
+                                <td><a class="btn btn-danger" href="{% url 'source-delete' source.id %}">Delete</a></td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            {% include 'layouts/pagination.html' %}
+        </div>
+    </div>
+
 {% endblock content %}

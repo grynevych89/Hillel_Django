@@ -10,7 +10,7 @@ from contacts.filters import ContactsFilter
 class ContactUsListView(FilterView):
     template_name = 'contacts/contacts_list.html'
     queryset = ContactUs.objects.all()
-    paginate_by = 2
+    paginate_by = 3
     filterset_class = ContactsFilter
 
     def get_context_data(self, **kwargs):
