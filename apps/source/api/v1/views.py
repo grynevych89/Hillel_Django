@@ -11,7 +11,7 @@ from source.api.v1.serializers import SourceSerializer
 from source.filters import SourceFilterApi
 from source.models import Source
 from source.paginators import SourcePagination
-from source.throttlers import AnonSourceThrottle
+# from source.throttlers import AnonSourceThrottle
 
 
 class SourceViewSet(viewsets.ModelViewSet):
@@ -26,4 +26,4 @@ class SourceViewSet(viewsets.ModelViewSet):
     )
     filterset_class = SourceFilterApi
     ordering_fields = ('id', 'name', 'price', 'source_url')
-    throttle_classes = (AnonSourceThrottle,)
+    # throttle_classes = (AnonSourceThrottle,)
