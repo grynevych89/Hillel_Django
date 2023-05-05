@@ -1,0 +1,1 @@
+[{"model": "currency.ratesource", "pk": 5, "fields": {"title": "MonoBank", "code_name": "monobank"}}, {"model": "currency.ratesource", "pk": 6, "fields": {"title": "PrivatBank", "code_name": "privatbank"}}]

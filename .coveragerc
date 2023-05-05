@@ -1,0 +1,19 @@
+[run]
+branch = True
+omit = */tests/*
+       */migrations/*
+       */management/*
+       */asgi.py
+       */wsgi.py
+       */settings*.py
+       */app/manage.py
+
+[report]
+precision = 4
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    def __str__
+
+[html]
+directory = .pytest_cache/coverage

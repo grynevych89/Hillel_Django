@@ -17,3 +17,9 @@ djangorestframework-xml
 djangorestframework-yaml
 djangorestframework-simplejwt
 drf-yasg
+
+#pytest
+pytest
+pytest-django
+pytest-cov
+pytest-mock

@@ -20,3 +20,6 @@ worker:
 
 beat:
 	celery -A root beat -l info
+
+pytest:
+	pytest ./apps/tests --cov=app --cov-report html && coverage report --fail-under=80.0
